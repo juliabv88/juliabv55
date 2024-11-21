@@ -16,6 +16,12 @@ template.querySelector("button[name=freeMode]").addEventListener('click', () => 
     showScreen("#game-screen");
 });
 
+template.querySelector("button[name=freeAltMode]").addEventListener('click', () => {
+    playpass.analytics.track('FreePlaySongClicked', {gameMode: state.gameMode});
+    state.setMode(Mode.FreeAlt);
+    showScreen("#game-screen");
+});
+
 template.addEventListener("active", () => {
     playpass.storage.set("sawTutorial", true);
 });
