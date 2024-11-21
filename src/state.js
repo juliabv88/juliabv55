@@ -4,13 +4,14 @@ import UserModel from "./models/userModel";
 import DailyModel from "./models/dailyModel";
 
 import { songs, challenge, hints, startDate, languages } from "../content/songs.json";
+import { songs as altSongs } from "../content/songs1.json";
 import { Daily } from "./boilerplate/interval";
 
 const MAX_ATTEMPTS = 6;
 
 let state;
 
-export const Mode = { Time: "timed", Free: "free" }
+export const Mode = { Time: "timed", Free: "free", FreeAlt: "freeAlt" };
 
 // The dice the player rolled today
 export default {
@@ -65,7 +66,8 @@ export default {
         return this.guesses.length >= this.attempts || this.isSolved();
     },
     getCurrentAnswer() {
-        const word = this.correctAnswer ?? songs[0];
+        const word = this.correctAnswer ?? 
+                     (this.gameMode === Mode.FreeAlt ? altSongs[0] : songs[0]);
         return `${word.artist} - ${word.name}`;
     },
     getCurrentRange() {
@@ -106,7 +108,7 @@ export default {
     },
     nextSong() {
         if (this.gameMode === Mode.Time) {
-            const today = challenge.find(({number}) => number === this.store.currentInterval);
+            const today = challenge.find(({ number }) => number === this.store.currentInterval);
             let answer;
             if (today) {
                 const song = songs.find((s) => s.name === today.name);
@@ -114,13 +116,14 @@ export default {
             } else {
                 answer = songs[this.random % songs.length];
             }
-
+    
             this.correctAnswer = Object.assign({ hints }, answer);
             return;
         }
-
-        const r = Math.floor(Math.random() * songs.length)
-        this.correctAnswer = songs[r];
+    
+        const songList = this.gameMode === Mode.FreeAlt ? altSongs : songs;
+        const r = Math.floor(Math.random() * songList.length);
+        this.correctAnswer = songList[r];
         this.resetGame();
     },
     resetGame(full = false) {
@@ -133,15 +136,15 @@ export default {
     },
     setMode(mode = Mode.Time) {
         this.gameMode = mode;
-
+    
         localStorage.setItem("gameMode", this.gameMode);
         document.body.setAttribute("mode", this.gameMode);
-
-        if (this.gameMode !== Mode.Time) {
+    
+        if (this.gameMode === Mode.Free || this.gameMode === Mode.FreeAlt) {
             this.wins = 0;
             this.score = 0;
         }
-
+    
         this.nextSong();
     },
     async login() {
