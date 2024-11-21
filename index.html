@@ -79,7 +79,6 @@
             <audio-ext></audio-ext>
             <p mode="timed">Can you guess today's song?</p>
             <p mode="free">Song #1</p>
-            <p mode="freeAlt">Song #1</p>
             <ul class="results">
                 <li class="result"></li>
                 <li class="result"></li>
@@ -185,54 +184,6 @@
                 <button name="next" color="primary" mode="free" solved>Next Song</button>
                 <button name="restart" color="primary" mode="free" gameover>Try Again</button>
             </span>
-            
-
-
-
-
-                        <p game-mode="freeAlt">
-                            Guess the song name in less guesses to maximize your score!
-                        </p>
-                        <p>
-                            If you'd like a different kind of challenge,<br>try pressing the <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16" style="vertical-align: middle">
-                                <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-                                <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-                              </svg> icon
-                        </p>
-
-
-
-        <div id="results-screen" slot="screen">
-            <h2 id="resultLine1">Song Title</h2>
-            <audio-ext></audio-ext>
-            <h2 id="resultLine2" mode="timed" gameover>Lucky!</h2>
-            <h2 id="resultLine3" mode="freeAlt">Guessed 1 song(s) in a row correctly</h2>
-            <div gameover>
-                <p>
-                    Share with your friends!
-                </p>
-                <button name="share" color="primary">
-                    Share
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16" style="vertical-align: middle;">
-                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
-                    </svg>
-                </button>
-            </div>
-            <span>
-                <button name="next" color="primary" mode="freeAlt" solved>Next Song</button>
-                <button name="restart" color="primary" mode="freeAlt" gameover>Try Again</button>
-            </span>
-
-
-
-
-
-
-
-
-
-
-            
 
             <p mode="timed"><span id="timeLeft"></span></p>
 
@@ -268,33 +219,6 @@
                     </form>
                 </div>
             </div>
-
-
-
-
-            <div id="replay-prompt" class="modal" mode="freeAlt">
-                <div class="modal-fade"></div>
-                <div class="modal-body">
-                    <form >
-                        <div class="modal-controls">
-                            <button type="submit" style="background: transparent; border: none;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" style="pointer-events: none">
-                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        Would you like to play more?
-                        <div class="modal-controls">
-                            <button type="submit" name="restart" slot="input" color="primary" gameover>Try Again</button>
-                            <button type="submit" name="next" slot="input" color="primary" solved>Next Song</button>
-                            <button type="submit" name="close" slot="input">No Thanks</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-
-
 
             <div id="share-prompt" class="modal" gameover>
                 <div class="modal-fade"></div>
@@ -364,7 +288,6 @@
                     <br><br><b>Made by <a href="https://x.com/twicefiles">TWICEFILES</a> with PlayPass SDK</b>
                 </p>
                 <button name="freeMode" color="primary">Free Play</button>
-                <button name="freeAlt" color="primary">Free Play (Easy)</button>
             </form>
         </div>
     </div>
