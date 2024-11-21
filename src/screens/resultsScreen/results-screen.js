@@ -94,7 +94,8 @@ template.addEventListener("active", async ({detail: {previous}}) => {
                 ? `Guessed ${state.wins} song(s) correctly<br>Score: ${state.score}`
                 : getEmojis()
             }
-        ${state.gameMode === Mode.FreeAlt
+        ${
+            state.gameMode === Mode.FreeAlt
                 ? `Guessed ${state.wins} song(s) correctly<br>Score: ${state.score}`
                 : getEmojis()
             }

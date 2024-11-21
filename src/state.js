@@ -96,7 +96,7 @@ export default {
 
             this.score += score;
         } else if (this.isDone()) {
-            if (this.gameMode === Mode.Free) {
+            if (this.gameMode === Mode.Free || this.gameMode === Mode.FreeAlt) {
                 this.store.freePlayHighScore = Math.max(this.score, this.store.freePlayHighScore);
                 this.store.freePlayHighStreak = Math.max(this.wins, this.store.freePlayHighStreak);
             } else {
