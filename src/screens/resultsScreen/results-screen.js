@@ -54,6 +54,15 @@ Array.from(template.querySelectorAll("button[name=free]")).forEach(e => {
     }
 });
 
+Array.from(template.querySelectorAll("button[name=freeAlt]")).forEach(e => {
+    e.onclick = () => {
+        playpass.analytics.track('FreePlaySongClicked', {gameMode: state.gameMode});
+        state.setMode(Mode.FreeAlt);
+        state.nextSong();
+        showScreen("#game-screen");
+    }
+});
+
 template.addEventListener("active", async ({detail: {previous}}) => {
     // since free mode songs are non-deterministic, on page refresh we should
     // redirect to the mode select screen else we will end up with a song
@@ -84,7 +93,11 @@ template.addEventListener("active", async ({detail: {previous}}) => {
             state.gameMode === Mode.Free
                 ? `Guessed ${state.wins} song(s) correctly<br>Score: ${state.score}`
                 : getEmojis()
-        }
+            }
+        ${state.gameMode === Mode.FreeAlt
+                ? `Guessed ${state.wins} song(s) correctly<br>Score: ${state.score}`
+                : getEmojis()
+            }
     `;
 
     const results = template.querySelector(`.results`);
